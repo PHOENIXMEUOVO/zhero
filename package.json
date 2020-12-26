@@ -1,0 +1,27 @@
+{
+  "name": "zhero",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zherodiscord/zhero.git",
+  "author": "Luís Felipe <luisfelipe.assuncao@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node -r module-alias/register index.js",
+    "dev": "nodemon",
+    "debug": "yarn lint && nodemon inspect",
+    "lint": "eslint src/ index.js",
+    "lint:fix": "eslint --fix src/ index.js"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "7.12.1",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
