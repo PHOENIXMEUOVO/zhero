@@ -1,16 +1,14 @@
-name: CI-CD
+name: CI
 
 on:
   - push
   - pull_request
 
 jobs:
-  test:
-    name: Tests
+  eslint:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
