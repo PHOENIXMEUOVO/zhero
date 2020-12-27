@@ -1,3 +1,3 @@
 module.exports = {
-  Base: require('./base')
+  Zhero: require('./base/Zhero')
 }
