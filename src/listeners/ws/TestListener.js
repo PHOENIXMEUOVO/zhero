@@ -10,9 +10,10 @@ module.exports = class ReadyListener extends Listener {
     }, client)
   }
 
-  onINTERACTION_CREATE ({ id, token, data }) {
-    if (data.name !== 'ping') return
-    this.client.api.interactions(id, token).callback.post({
+  onINTERACTION_CREATE (interaction) {
+    console.log(interaction)
+    if (interaction.data.name !== 'ping') return
+    this.client.api.interactions(interaction.id, interaction.token).callback.post({
       data: {
         type: 3,
         data: {
