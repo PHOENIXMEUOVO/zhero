@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
-const { Listener } = require('../../structures')
-const { Constants: { Colors } } = require('discord.js')
+const { Listener, Interaction } = require('../../structures')
 
 module.exports = class ReadyListener extends Listener {
   constructor (client) {
@@ -10,21 +9,11 @@ module.exports = class ReadyListener extends Listener {
     }, client)
   }
 
-  onINTERACTION_CREATE (interaction) {
-    console.log(interaction)
-    if (interaction.data.name !== 'ping') return
-    this.client.api.interactions(interaction.id, interaction.token).callback.post({
-      data: {
-        type: 3,
-        data: {
-          embeds: [
-            {
-              description: `:ping_pong: \`${Math.ceil(this.client.ws.ping)}ms\``,
-              color: Colors.BLURPLE
-            }
-          ]
-        }
-      }
-    })
+  onINTERACTION_CREATE (data) {
+    const interaction = new Interaction(data, this.client)
+    interaction.setPrefix(process.env.PREFIX)
+
+    const command = this.client.commands.find(({ name }) => name === interaction.data.name)
+    if (command) command.run(interaction)
   }
 }
