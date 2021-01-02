@@ -9,6 +9,8 @@ module.exports = class Command {
     this.description = options.required('description')
     this.options = options.optional('options', [])
 
+    this.hidden = options.optional('hidden', false)
+
     this.client = client
   }
 

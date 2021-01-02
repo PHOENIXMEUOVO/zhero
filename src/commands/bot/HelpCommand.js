@@ -19,7 +19,8 @@ module.exports = class HelpCommand extends Command {
 
   run (interaction) {
     const embed = new Embed(interaction.user)
-    const command = interaction.args.length && this.client.commands.find(({ name }) => name === interaction.args[0].value)
+    const validCommands = this.client.commands.filter(({ hidden }) => !hidden)
+    const command = interaction.args.length && validCommands.find(({ name }) => name === interaction.args[0].value)
 
     if (command) {
       embed
@@ -33,7 +34,7 @@ module.exports = class HelpCommand extends Command {
       embed.setDescription([
         `\`🌍\` **Prefix:** \`${interaction.prefix}\``,
         '',
-        ...this.client.commands.map(({ name, description }) => `• \`/${name}\` - *${description}*`),
+        ...validCommands.map(({ name, description }) => `• \`/${name}\` - *${description}*`),
         '',
         `\`❓\` To know more about a command, use ${this.buildCommandUsage(this, interaction.prefix)}`
       ])
