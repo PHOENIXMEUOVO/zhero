@@ -13,9 +13,11 @@ module.exports = class BotinfoCommand extends Command {
   async run (interaction) {
     const validCommands = this.client.commands.filter(({ hidden }) => !hidden)
     const invite = await this.client.generateInvite()
-    const embed = new Embed(interaction.user)
+
+    const embed = new Embed()
       .setDescription([
-        `\`🤖\` _Hi, my name is **${this.client.user.tag}**, a music bot that will surprise you_`
+        `\`🤖\` Hi, my name is **${this.client.user.tag}**, a music bot that will surprise you ;)`,
+        '`📌` I\'m using the new [_Slash Commands_](https://discord.com/developers/docs/interactions/slash-commands) of Discord, you can use `/help` to list my commands'
       ])
       .addField('`📊` Stats', [
         `**Commands:** \`${validCommands.length}\``,
@@ -27,6 +29,16 @@ module.exports = class BotinfoCommand extends Command {
         '[**Support**](https://discord.gg/aVcU4Re2Qh)',
         `[**Invite**](${invite})`
       ], true)
+      .addField('`⭐` Additional Information', [
+        `**Node.js:** \`${process.version}\``,
+        `**Discord.js:** \`v${require('discord.js').version}\``,
+        `**Version:** \`v${require('../../../package.json').version}\``
+      ], true)
+      .addField('\u200b', [
+        '`❗` The bot is still in the development phase, any bug/error contact us so we can solve it as soon as possible.',
+        '',
+        '**Thank You `❤️`**'
+      ], false)
 
     return interaction.send({
       embeds: [embed]

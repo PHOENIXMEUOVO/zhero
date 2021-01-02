@@ -40,7 +40,7 @@ module.exports = class HelpCommand extends Command {
       ])
     }
 
-    interaction.send({
+    return interaction.send({
       embeds: [embed]
     })
   }
