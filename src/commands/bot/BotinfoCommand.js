@@ -35,9 +35,7 @@ module.exports = class BotinfoCommand extends Command {
         `**Version:** \`v${require('../../../package.json').version}\``
       ], true)
       .addField('\u200b', [
-        '`❗` The bot is still in the development phase, any bug/error contact us so we can solve it as soon as possible.',
-        '',
-        '**Thank You `❤️`**'
+        '`❗` The bot is still in the development phase, any bug/error contact us so we can solve it as soon as possible.'
       ], false)
 
     return interaction.send({
