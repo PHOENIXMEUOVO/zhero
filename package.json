@@ -26,6 +26,7 @@
     "axios": "^0.21.1",
     "billboard-top-100": "^2.5.9",
     "discord.js": "^12.5.1",
+    "lavacord": "^1.1.9",
     "moment": "^2.29.1",
     "winston": "^3.3.3"
   },
